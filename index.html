@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Facts about Earth</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fun Fact about Earth</h1>
+        <p id="fact"></p>
+        <button onclick="showRandomFact()">Show Another Fact</button>
+    </div>
+    <script>
+        const facts = [
+            "Earth is the third planet from the Sun.",
+            "Earth is the only planet known to support life.",
+            "About 71% of Earth's surface is covered by water.",
+            "Earth's atmosphere is composed mainly of nitrogen and oxygen.",
+            "The Earth's core is as hot as the surface of the Sun.",
+            "Earth has a strong magnetic field that protects it from the effects of solar wind.",
+            "The Earth is approximately 4.54 billion years old.",
+            "The highest point on Earth is Mount Everest, which is 8,848 meters above sea level.",
+            "The lowest point on Earth's surface is the Challenger Deep in the Mariana Trench, about 10,994 meters below sea level.",
+            "Earth orbits the Sun at an average distance of about 93 million miles (150 million kilometers)."
+        ];
+
+        function showRandomFact() {
+            const factIndex = Math.floor(Math.random() * facts.length);
+            document.getElementById('fact').textContent = facts[factIndex];
+        }
+
+        // Initially show a random fact
+        window.onload = function() {
+            showRandomFact();
+        };
+    </script>
+</body>
+</html>
