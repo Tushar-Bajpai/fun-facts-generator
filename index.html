@@ -20,6 +20,18 @@
             border: 1px solid #ccc;
             border-radius: 8px;
             background-color: #fff;
+            width: 50%;
+        }
+
+        #fact {
+            opacity: 0;
+            transition: opacity 2s;
+        }
+
+        #factImage {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 20px;
         }
 
         button {
@@ -30,6 +42,7 @@
             color: white;
             border: none;
             border-radius: 5px;
+            transition: background-color 0.3s;
         }
 
         button:hover {
@@ -41,25 +54,37 @@
     <div class="container">
         <h1>Fun Fact about Earth</h1>
         <p id="fact"></p>
+        <img id="factImage" src="" alt="Earth Fact Image">
         <button onclick="showRandomFact()">Show Another Fact</button>
     </div>
     <script>
         const facts = [
-            "Earth is the third planet from the Sun.",
-            "Earth is the only planet known to support life.",
-            "About 71% of Earth's surface is covered by water.",
-            "Earth's atmosphere is composed mainly of nitrogen and oxygen.",
-            "The Earth's core is as hot as the surface of the Sun.",
-            "Earth has a strong magnetic field that protects it from the effects of solar wind.",
-            "The Earth is approximately 4.54 billion years old.",
-            "The highest point on Earth is Mount Everest, which is 8,848 meters above sea level.",
-            "The lowest point on Earth's surface is the Challenger Deep in the Mariana Trench, about 10,994 meters below sea level.",
-            "Earth orbits the Sun at an average distance of about 93 million miles (150 million kilometers)."
+            {
+                fact: "Earth is the third planet from the Sun.",
+                img: "path/to/image1.jpg"
+            },
+            {
+                fact: "Earth is the only planet known to support life.",
+                img: "path/to/image2.jpg"
+            },
+            {
+                fact: "About 71% of Earth's surface is covered by water.",
+                img: "path/to/image3.jpg"
+            },
+            // Add more facts with images
         ];
 
         function showRandomFact() {
             const factIndex = Math.floor(Math.random() * facts.length);
-            document.getElementById('fact').textContent = facts[factIndex];
+            const factElement = document.getElementById('fact');
+            const imageElement = document.getElementById('factImage');
+
+            factElement.style.opacity = 0;
+            setTimeout(() => {
+                factElement.textContent = facts[factIndex].fact;
+                imageElement.src = facts[factIndex].img;
+                factElement.style.opacity = 1;
+            }, 200);
         }
 
         // Initially show a random fact
